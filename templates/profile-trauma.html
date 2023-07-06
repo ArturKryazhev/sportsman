@@ -1,0 +1,157 @@
+{% extends 'main_profile.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="sportmanList profileBody">
+
+    <!-- Контент профиля -->
+    <div class="profile__content">
+        <div class="profile__inf">
+            <div class="profile__inf__title">
+                <h3 class="profile__id">id: {{sportman.id}}</h3>
+                <h3 class="profile__title">Цифровой профиль: Травмы</h3>
+            </div>
+            <div class="anthropometry__content">
+                <!-- Шапка для добавления, обновления, ориентирования -->
+                <div class="anthropometry__row anthropometry__header">
+                    <div class="anthropometry__left anthropometry__header__left">
+                        <!-- Функции записей антропометрии -->
+                        <div class="anthropometry__options anthropometry__header__options">
+                            <a href="#create_popup">
+                                <span class="material-symbols-outlined">
+                                    add_circle
+                                </span>
+                            </a>
+                            <a href="{% url 'sportman-traumas' sportman.id %}">
+                                <span class="material-symbols-outlined">
+                                    sync
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="sportmanRow__right anthropometry__header__right">
+                        <h4>Название травмы</h4>
+                        <h4>Справка о полученной травме</h4>
+                        <div class="anthropometry__time anthropometry__header__time medicine__header__time">Срок восстановления</div>
+                    </div>
+                </div>
+
+                <!-- Замеры антропометрических данных спортсмена -->
+                {% for trauma in traumas %}
+                <div class="anthropometry__row">
+                    <div class="anthropometry__left">
+                        <!-- Функции записей антропометрии -->
+                        <div class="anthropometry__options">
+                            <a href="">
+                                <span class="material-symbols-outlined material-symbols-outlined__delete">
+                                    delete
+                                </span>
+                            </a>
+                            <a href="">
+                                <span class="material-symbols-outlined material-symbols-outlined__edit">
+                                    edit
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="sportmanRow__right">
+                        <h4>{{trauma.name}}</h4>
+                        <h4>{{trauma.file}}</h4>
+                        <div class="anthropometry__time trauma__time">{{trauma.start|date:'d.m.Y'}}-{{trauma.end|date:'d.m.Y'}}</div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Sidebar профиля -->
+    <div class="profile__sidebar">
+        <a href="{% url 'sportman-profile' sportman.id %}">
+            <div class="profile__sidebarOption">
+                <h3>Общая информация</h3>
+            </div>
+        </a>
+        <a href="{% url 'sportman-anthropometry' sportman.id %}">
+            <div class="profile__sidebarOption">
+                <h3>Антропометрия</h3>
+            </div>
+        </a>
+        <a href="{% url 'sportman-career' sportman.id %}">
+            <div class="profile__sidebarOption">
+                <h3>Карьерная история</h3>
+            </div>
+        </a>
+        <a href="{% url 'sportman-medicine' sportman.id %}">
+            <div class="profile__sidebarOption">
+                <h3>Медицинские показатели</h3>
+            </div>
+        </a>
+        <a href="{% url 'sportman-indicators' sportman.id %}">
+            <div class="profile__sidebarOption">
+                <h3>Нормативы</h3>
+            </div>
+        </a>
+        <a href="{% url 'sportman-competitions' sportman.id %}">
+            <div class="profile__sidebarOption">
+                <h3>История соревнований</h3>
+            </div>
+        </a>
+        <a href="{% url 'sportman-diet' sportman.id %}">
+            <div class="profile__sidebarOption">
+                <h3>Система питания</h3>
+            </div>
+        </a>
+        <a href="{% url 'sportman-traumas' sportman.id %}">
+            <div class="profile__sidebarOption profile__sidebarOption_active">
+                <h3>Травмы</h3>
+            </div>
+        </a>
+    </div>
+
+    <!-- Pop-up Create a digital profile Starts -->
+    <div class="popup" id="create_popup">
+        <div class="popup__body">
+            <div class="popup__content">
+                <a href="{% url 'sportman-traumas' sportman.id %}" class="popup__close close-popup">
+                    <span class="material-symbols-outlined">
+                        close
+                    </span>
+                </a>
+                <div class="popup__title">Добавить сведения о травме</div>
+                    <div class="form">
+                        <form action="{% url 'sportman-traumas' sportman.id %}" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="input_field">
+                                {{trauma_form.name}}
+                            </div>
+
+                            <div class="input_field">
+                                {{trauma_form.start}}
+                            </div>
+
+                            <div class="input_field">
+                                {{trauma_form.end}}
+                            </div>
+
+                            <div class="input_field">
+                                {{trauma_form.file}}
+                            </div>
+                            
+                            <div class="input_field button">
+                                <input type="submit" value="Добавить">
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Pop-up Create a digital profile Ends -->
+</div>
+
+{% endblock content %}

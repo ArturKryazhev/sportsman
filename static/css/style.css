@@ -1,0 +1,934 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+a{
+    text-decoration: none;
+    color: #000000;
+}
+
+/* =================================HEADER======================================= */
+
+.header{
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #F6F8FC;
+}
+
+.header__middle{
+    display: flex;
+    flex: 0.3;
+    align-items: center;
+    background-color: #EAF1FB;
+    padding: 10px;
+    border-radius: 25px;
+}
+
+.material-symbols-outlined {
+    color: grey;
+}
+
+.header__middle form{
+    width: 100%;
+}
+
+.header__middle input{
+    border: none;
+    width: 100%;
+    padding: 10px;
+    outline: none;
+    background-color: transparent;
+    font-size: medium;
+}
+
+.header__right{
+    display: flex;
+    padding-right: 40px;
+    align-items: center;
+}
+
+.header__right span{
+    cursor: pointer;
+}
+
+/* =========================================SIDEBAR=================================================== */
+
+.sidebar{
+    flex: 0.3;
+    max-width: 300px;
+    padding-right: 20px;
+    background-color: #F6F8FC;
+}
+
+.sidebar__compose{
+    margin-top: 3px;
+    margin-left: 10px;
+    margin-bottom: 25px;
+    width: 100px;
+    text-transform: capitalize;
+    color: white;
+    font-weight: 500;
+    padding: 15px;
+    border-radius: 30px;
+    background-color: #71AAFF;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    box-shadow: 0px 2px 5px -2px rgba(121, 105, 237, 0.75);
+}
+
+.logout__button{
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 500;
+    font-size: 14px;
+    margin-top: 23px;
+}
+
+.sidebar__compose span{
+    margin-right: 5px;
+}
+
+.sidebar__compose .material-symbols-outlined{
+    margin-right: 5px;
+    color: white;
+}
+
+.sidebar__compose:hover{
+    background-color: #408bfc;
+}
+
+.sidebarOption{
+    display: flex;
+    align-items: center;
+    height: 50px;
+    padding: 0 10px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    cursor: pointer;
+    color: #000000;
+}
+
+.sidebarOption .material-symbols-outlined{
+    padding: 5px;
+}
+
+.sidebarOption h3{
+    flex: 1;
+    margin-left: 10px;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.sidebarOption:hover,
+.sidebarOption:hover h3,
+.sidebarOption:hover .material-symbols-outlined{
+    background-color: #EAEBEF;
+}
+
+.sidebarOption__active,
+.sidebarOption__active h3,
+.sidebarOption__active .material-symbols-outlined{
+    background-color: #D3E3FD;
+    color: #202124;
+}
+
+.sidebarOption__active h3{
+    font-weight: 800;
+}
+
+/* ==========================================MAIN BODY===================================================== */
+.main__body{
+    display: flex;
+    height: 100vh;
+    background-color: #F6F8FC;
+}
+
+body{
+    height: 100vh;
+    overflow-y: hidden;
+}
+
+/* ==========================================EMAIL LIST===================================================== */
+.sportmanList{
+    flex: 1;
+    overflow: scroll;
+    background-color: white;
+    border-radius: 25px;
+    margin-right: 40px;
+}
+
+.sportmanRow__options{
+    display: flex;
+    align-items: center;
+}
+
+/* =================material-symbols-outlined================== */
+
+.sportmanRow .material-symbols-outlined{
+    color: grey;
+}
+
+.sportmanRow__options span:hover{
+    color:#71AAFF;
+}
+
+/* ==================material-symbols-outlined==================== */
+
+.sportmanRow__options .material-symbols-outlined{
+    margin: 7px;
+}
+
+.sportmanRow__left{
+    display: flex;
+    align-items: center;
+}
+
+.sportmanRow__right{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.sportmanRow{
+    display: flex;
+    align-items: center;
+    height: 50px;
+    border-bottom: 1px solid whitesmoke;
+    cursor: pointer;
+}
+
+.sportmanRow:hover{
+    border-top: 1px solid whitesmoke;
+    box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.24);
+}
+
+.sportmanRow__title{
+    width: 598px;
+    font-size: 18px;
+    padding-left: 10px;
+    padding-right: 50px;
+}
+
+.sportmanRow__title:hover{
+    color: #71AAFF;
+}
+
+.sportmanRow__time{
+    padding-right: 15px;
+    font-size: 14px;
+    font-weight: 700;
+    width: 100%;
+    text-align: right;
+}
+
+.sportmanRow h4{
+    padding: 0px 50px;
+}
+
+/* ======================Create Popup Starts===================== */
+
+.popup{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s ease 0s;
+}
+
+.popup:target{
+    opacity: 1;
+    visibility: visible;
+}
+
+.popup__body{
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 10px;
+}
+
+/* Видимая часть попапа */
+.popup__content{
+    background-color: #fff;
+    color: #000;
+    width: 600px;
+    padding: 30px;
+    position: relative;
+}
+
+/* Закрывающая кнопка */
+.popup__close{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 20px;
+    color: #000;
+}
+
+/* Форма добавления спортсмена */
+.popup__content .form{
+    padding: 30px;
+}
+
+.popup__title{
+    position: relative;
+    font-size: 27px;
+    font-weight: 600;
+  }
+
+.popup__title::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+    height: 3px;
+    width: 30px;
+    background-color: #4070f4;
+    border-radius: 25px;
+}
+
+.input_field{
+    margin-top: 30px;
+    position: relative;
+    height: 50px;
+    width: 100%;
+}
+  
+.input_field input{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    border-bottom: 2px solid #ccc;
+    border-top: 2px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.input_field input:focus:valid{
+    border-bottom-color: #4070f4;
+}
+  
+ 
+.button{
+    margin-top: 35px;
+}
+  
+.button input{
+    border: none;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    border-radius: 6px;
+    background-color: #4070f4;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+  
+.button input:hover{
+    background-color: #265df2 ;
+}
+
+/* ======================Create Popup Ends===================== */
+
+/* =========================Anthropometry Starts========================== */
+
+.anthropometry__content{
+    padding: 40px 80px;
+    margin: 0 auto;
+    display: block;
+}
+
+.anthropometry__options{
+    display: flex;
+    align-items: center;
+}
+
+.anthropometry__row .material-symbols-outlined{
+    color: grey;
+}
+
+.anthropometry__options span:hover{
+    color:#71AAFF;
+}
+
+
+.anthropometry__options .material-symbols-outlined{
+    margin: 7px;
+}
+
+.anthropometry__left{
+    display: flex;
+    align-items: center;
+}
+
+.anthropometry__right{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.anthropometry__row{
+    display: flex;
+    align-items: center;
+    height: 50px;
+    border-bottom: 1px solid whitesmoke;
+    border-left: 1px solid whitesmoke;
+    border-right: 1px solid whitesmoke;
+    cursor: pointer;
+}
+
+.anthropometry__row:hover{
+    border-top: 1px solid whitesmoke;
+    box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.24);
+}
+
+.anthropometry__time{
+    padding-right: 15px;
+    font-size: 14px;
+    font-weight: 700;
+    width: 100%;
+    text-align: center;
+    padding-left: 50px;
+    color: rgb(123, 123, 123);
+    width: 100px;
+}
+
+.anthropometry__row h4{
+    width: 100px;
+    padding: 0px 50px;
+    color: rgb(123, 123, 123);
+}
+
+/* Шапка антропометрии  */
+
+.anthropometry__header__options{
+    display: flex;
+    align-items: center;
+}
+
+.anthropometry__header .material-symbols-outlined{
+    color: rgb(0, 0, 0);
+}
+
+.anthropometry__header__options span:hover{
+    color:#71AAFF;
+}
+
+
+.anthropometry__header__options .material-symbols-outlined{
+    margin: 7px;
+}
+
+.anthropometry__header__left{
+    display: flex;
+    align-items: center;
+}
+
+.anthropometry__header__right{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.anthropometry__header{
+    display: flex;
+    align-items: center;
+    height: 50px;
+    border: none;
+    background-color: #EAF1FB;
+    box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.24);
+    cursor: default;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.anthropometry__header:hover{
+    border-top: none;
+    box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.24);
+}
+
+.anthropometry__header__time{
+    padding-right: 15px;
+    font-size: 14px;
+    font-weight: 700;
+    width: 100%;
+    text-align: center;
+    padding-left: 50px;
+    color: rgb(0, 0, 0);
+    width: 100px;
+}
+
+.anthropometry__header h4{
+    width: 100px;
+    padding: 0px 50px;
+    color: rgb(0, 0, 0);
+}
+
+/* =========================Anthropometry Ends========================== */
+
+/* =========================Competitions Starts========================== */
+
+.competition__content{
+    padding: 40px 0px;
+    margin: 0 auto;
+    display: block;
+}
+
+.competition__header h4{
+    width: 300px;
+}
+
+.competition__right h4{
+    width: 300px;
+    padding: 0px 50px;
+    color: rgb(123, 123, 123);
+}
+
+.competition__row{
+    display: flex;
+    align-items: center;
+    height: 100px;
+    border-bottom: 1px solid whitesmoke;
+    border-left: 1px solid whitesmoke;
+    border-right: 1px solid whitesmoke;
+    cursor: pointer;
+}
+
+/* =========================Competitions Ends========================== */
+
+/* =========================Career Starts========================== */
+
+.career__time{
+    padding-right: 15px;
+    font-size: 14px;
+    font-weight: 700;
+    width: 100%;
+    text-align: center;
+    padding-left: 50px;
+    color: rgb(123, 123, 123);
+    width: 200px;
+}
+
+.career__header__time{
+    color: rgb(0, 0, 0);
+}
+
+.career__content{
+    padding: 40px 40px;
+    margin: 0 auto;
+    display: block;
+}
+
+.career__header h4{
+    width: 200px;
+}
+
+.career__right h4{
+    width: 200px;
+    padding: 0px 50px;
+    color: rgb(123, 123, 123);
+}
+
+.career__row{
+    display: flex;
+    align-items: center;
+    height: 70px;
+    border-bottom: 1px solid whitesmoke;
+    border-left: 1px solid whitesmoke;
+    border-right: 1px solid whitesmoke;
+    cursor: pointer;
+}
+
+/* =========================Career Ends========================== */
+
+/* =========================Indicators Starts========================== */
+
+.indicators__content{
+    padding: 40px 40px;
+    margin: 0 auto;
+    display: block;
+}
+
+.indicator__row{
+    display: flex;
+    align-items: center;
+    height: 50px;
+    border-bottom: 1px solid whitesmoke;
+    border-left: 1px solid whitesmoke;
+    border-right: 1px solid whitesmoke;
+    cursor: pointer;
+}
+
+.indicator__row:hover{
+    border-top: 1px solid whitesmoke;
+    box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.24);
+}
+
+.indicator__row h4{
+    width: 250px;
+    padding: 0px 50px;
+    color: rgb(123, 123, 123);
+}
+
+/* Шапка нормативов  */
+
+.indicators__header{
+    display: flex;
+    align-items: center;
+    height: 50px;
+    border: none;
+    background-color: #EAF1FB;
+    box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.24);
+    cursor: default;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.indicators__header:hover{
+    border-top: none;
+    box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.24);
+}
+
+.indicators__header h4{
+    width: 250px;
+    padding: 0px 50px;
+    color: rgb(0, 0, 0);
+}
+
+.select_container select{
+    border: none;
+    appearance: none;
+    padding: 0 0px 0 0px;
+    width: 100%;
+    color: grey;
+    background-color: white;
+    font-size: 16px;
+    border-bottom: 2px solid #ccc;
+    height: 50px;
+}
+
+/* =========================Indicators Ends========================== */
+
+/* =========================Diet Starts========================== */
+
+.diet__inf{
+    max-height: 90%;
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+
+.diet__content{
+    padding: 40px 20px;
+    display: block;
+}
+
+td textarea{
+    width: 200px;
+    height: 80px;
+    border: none;
+    outline: none;
+    resize: none;
+    background-color: inherit;
+    font-size: 16px;
+    scrollbar-width: thin;
+    background-color: #EAF1FB;
+}
+
+td input{
+    width: 200px;
+    height: 80px;
+    border: none;
+    outline: none;
+    resize: none;
+    background-color: inherit;
+    text-align: center;
+    font-size: 16px;
+    background-color: #EAF1FB;
+}
+
+.td_weekday{
+    padding: 0 30px;
+    text-align: center;
+    font-size: 18px;
+    background-color:#71AAFF;
+    color: #fff;
+    font-weight: 600;
+}
+
+.diet__content table thead{
+    background-color:#71AAFF;
+    color: #fff;
+    height: 40px;
+    font-size: 18px;
+}
+
+
+.diet__button{
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    border-radius: 6px;
+    background-color: #71AAFF;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 150px;
+    padding: 15px 5px;
+    float: right;
+    margin-right: 32px;
+    margin-top: 20px;
+  }
+
+
+/* =========================Diet Ends========================== */
+
+/* =========================Medicine Starts========================== */
+
+.medicine__content{
+    padding: 40px 0px;
+    margin: 0 auto;
+    display: block;
+}
+
+.medicine__header{
+    display: flex;
+    align-items: center;
+    height: 50px;
+    border: none;
+    background-color: #EAF1FB;
+    box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.24);
+    cursor: default;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.medicine__header__left{
+    display: flex;
+    align-items: center;
+}
+
+.medicine__header__right{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.medicine__header h4{
+    width: 100px;
+    padding: 0px 50px;
+    color: rgb(0, 0, 0);
+}
+
+.medicine__header__options{
+    display: flex;
+    align-items: center;
+}
+
+.medicine__header .material-symbols-outlined{
+    color: rgb(0, 0, 0);
+}
+
+.medicine__header__options span:hover{
+    color:#71AAFF;
+}
+
+.medicine__header__options .material-symbols-outlined{
+    margin: 7px;
+}
+
+.medicine__header:hover{
+    border-top: none;
+    box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.24);
+}
+
+.medicine__header__time{
+    padding-right: 15px;
+    font-size: 14px;
+    font-weight: 700;
+    width: 100%;
+    text-align: center;
+    padding-left: 50px;
+    color: rgb(0, 0, 0);
+    width: 100px;
+}
+
+/* =========================Medicine Ends========================== */
+
+/* ===========================Compare Starts==================================== */
+
+.compare__content{
+    flex: 1;
+    background-color: #fff;
+    border-radius: 25px;
+    padding: 30px;
+    margin-right: 35px;
+}
+
+.compare__title{
+    text-align: center;
+}
+
+.compare__submit-form{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.compare__sportmans{
+    display: flex;
+    margin-top: 25px;
+}
+
+.left-sportman{
+    flex: 0.5;
+    max-height: 710px;
+    overflow-y: auto;
+    scrollbar-width:thin;
+    border-right: 0.5px solid #4070f4;
+    padding-right: 25px;
+}
+
+.left-sportman__header{
+    text-align: center;
+}
+
+.right-sportman{
+    flex: 0.5;
+    max-height: 710px;
+    overflow-y: auto;
+    scrollbar-width:thin;
+    border-left: 0.5px solid #4070f4;
+    padding-left: 25px;
+}
+
+.right-sportman__header{
+    text-align: center;
+}
+
+.right-sportman__body{
+    margin-top: 20px;
+}
+
+.left-sportman__body{
+    margin-top: 20px;
+}
+
+.left-sportman__anthropometry__title{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.right-sportman__anthropometry__title{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.anthropometry__time__compare{
+    padding-right: 15px;
+    font-size: 14px;
+    font-weight: 700;
+    width: 100%;
+    text-align: center;
+    padding-left: 150px;
+    color: rgb(123, 123, 123);
+    width: 100px;
+}
+
+.anthropometry__header__time__compare{
+    padding-right: 15px;
+    font-size: 14px;
+    font-weight: 700;
+    width: 100%;
+    text-align: center;
+    padding-left: 150px;
+    color: rgb(0, 0, 0);
+    width: 100px;
+}
+
+.left-sportman__career__title{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.career__body{
+    font-size: 18px;
+    margin-top: 20px;
+    background-color: #EAF1FB;
+}
+
+.career__body hr{
+    color: #4070f4;
+}
+
+.career__body div{
+    margin-top: 10px;
+    padding-left: 15px;
+}
+
+.career__body div:last-child{
+    padding-bottom: 10px;
+}
+
+.form-compare{
+    display: flex;
+    justify-content: center;
+}
+
+.input-text{
+    background-color: #EAF1FB;
+}
+
+.input-text input{
+    border: none;
+    background-color: transparent;
+    height: 30px;
+    width: 150px;
+}
+
+.input-button input{
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    background-color: #71AAFF;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100px;
+    height: 30px;
+}
+
+.medicine__header__time{
+    padding-left: 200px;
+}
+
+.medicine__time{
+    padding-left: 200px;
+}
+
+.trauma__time{
+    padding-left: 200px;
+}
+
+.medicine__header__time{
+    padding-left: 200px;
+}
+
+/* ===========================Compare Ends==================================== */
